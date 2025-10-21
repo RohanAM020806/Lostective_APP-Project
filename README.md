@@ -62,7 +62,7 @@ Technologies Used 🛠️
 
 Frontend: React.js,  Tailwind CSS
 
-Backend: Node.js + Express.js
+Backend: FastApi
 
 Database: MongoDB
 
