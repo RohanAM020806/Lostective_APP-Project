@@ -49,7 +49,7 @@ Features :
  
   **📝 Natural Language Processing (NLP):** Performs semantic analysis on text descriptions to understand context and synonyms (e.g., matches "dark wallet" with "black leather billfold").
   
- **📸 Computer Vision (CNN):** Analyzes uploaded images to compare visual features like color, shape, and texture, finding matches even with different photo quality or angles.
+ 
  
 * 🔔 **Automated Real-Time Notifications:** Users are proactively alerted via instant notifications as soon as the system identifies a high-confidence match for their item.
 * 
@@ -66,7 +66,7 @@ Backend: FastApi
 
 Database: MongoDB
 
-Authentication: JSON Web Tokens (JWT)
+
 
 
 Installation (Local Setup) 💻
