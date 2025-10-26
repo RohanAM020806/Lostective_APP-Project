@@ -1,0 +1,141 @@
+/* ===== Premium Page ===== */
+.premium-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7ff, #ecebff, #e8f0ff);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 60px 20px;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Header */
+.premium-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.premium-header h1 {
+  font-size: 2.2rem;
+  color: #1e1e3f;
+  margin-top: 0.5rem;
+}
+
+.premium-header p {
+  color: #6c6c8a;
+  font-size: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.premium-icon {
+  color: #facc15;
+  font-size: 2.5rem;
+}
+
+/* Cards */
+.premium-cards {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.plan-card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem;
+  width: 320px;
+  box-shadow: 0 10px 30px rgba(70, 80, 255, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.plan-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(70, 80, 255, 0.2);
+}
+
+.plan-card h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #4338ca;
+}
+
+.plan-card .price {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 1.5rem;
+}
+
+/* Lists */
+.plan-card ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+.plan-card li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+
+.plan-card li svg {
+  color: #22c55e;
+}
+
+/* Buttons */
+.btn-upgrade,
+.btn-disabled {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-upgrade {
+  background: linear-gradient(90deg, #6366f1, #818cf8);
+  color: white;
+  transition: background 0.3s ease;
+}
+
+.btn-upgrade:hover {
+  background: linear-gradient(90deg, #4f46e5, #6366f1);
+}
+
+.btn-disabled {
+  background: #f3f4f6;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+
+/* Footer */
+.premium-footer {
+  margin-top: 60px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.premium-footer a {
+  color: #4f46e5;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

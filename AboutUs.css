@@ -1,0 +1,30 @@
+.about-us-container {
+  padding-top: 8rem;
+  padding-bottom: 8rem;
+  min-height: 80vh;
+}
+
+.mission-points {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+  text-align: left;
+}
+
+.mission-point {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+}
+
+.mission-point h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.mission-point p {
+  color: var(--color-text-light);
+  line-height: 1.6;
+}

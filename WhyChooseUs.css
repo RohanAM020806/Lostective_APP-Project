@@ -1,0 +1,15 @@
+/* WhyChooseUs.css */
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  text-align: left;
+}
+.feature-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+}
+.feature-card h3 { font-size: 1.25rem; margin-bottom: 0.75rem; }
+.feature-card p { color: var(--color-text-light); line-height: 1.6; }

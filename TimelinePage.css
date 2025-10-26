@@ -1,0 +1,177 @@
+/* ===============================
+   General Layout
+=============================== */
+.timeline-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8faff 0%, #ffffff 100%);
+  padding: 80px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Poppins", sans-serif;
+  color: #1e293b;
+}
+
+/* ===============================
+   Header
+=============================== */
+.timeline-header {
+  text-align: center;
+  margin-bottom: 60px;
+  max-width: 700px;
+}
+
+.timeline-header h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  background: linear-gradient(90deg, #6366f1, #3b82f6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 12px;
+}
+
+.timeline-header p {
+  font-size: 1.1rem;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* ===============================
+   Timeline Vertical Layout
+=============================== */
+.timeline {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  width: 90%;
+  max-width: 850px;
+}
+
+/* Each item row */
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  position: relative;
+}
+
+/* Connector and dot */
+.timeline-dot-connector {
+  position: relative;
+  width: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.timeline-dot {
+  width: 16px;
+  height: 16px;
+  background: #6366f1;
+  border-radius: 50%;
+  box-shadow: 0 0 0 6px rgba(99, 102, 241, 0.2);
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-line {
+  flex-grow: 1;
+  width: 3px;
+  background: linear-gradient(to bottom, #e2e8f0, #cbd5e1);
+  margin-top: 4px;
+  border-radius: 2px;
+}
+
+/* ===============================
+   Card Styling
+=============================== */
+.timeline-content {
+  flex-grow: 1;
+}
+
+.timeline-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  padding: 24px 28px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.08);
+}
+
+/* ===============================
+   Card Texts
+=============================== */
+.card-version-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.card-version-icon::before {
+  content: "🚀";
+  font-size: 1.4rem;
+}
+
+.card-version-summary {
+  font-size: 1rem;
+  color: #64748b;
+  margin: 6px 0 16px;
+}
+
+/* Features List */
+.card-features-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.card-features-list li {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 8px;
+  color: #475569;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.card-features-list li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: #10b981;
+  font-size: 1rem;
+  top: 0;
+}
+
+/* Hover Animation */
+.card-features-list li:hover {
+  color: #111827;
+}
+
+/* ===============================
+   Responsive
+=============================== */
+@media (max-width: 700px) {
+  .timeline-item {
+    gap: 16px;
+  }
+  .timeline-dot-connector {
+    width: 28px;
+  }
+  .timeline-card {
+    padding: 20px;
+  }
+  .timeline-header h1 {
+    font-size: 2rem;
+  }
+}

@@ -1,0 +1,37 @@
+.how-it-works-section {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+.steps-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+.step-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 20px;
+  flex: 1;
+  max-width: 350px;
+  box-shadow: var(--card-shadow);
+}
+.step-number {
+  width: 50px;
+  height: 50px;
+  background: var(--gradient-button-primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin: 0 auto 1rem auto;
+}
+.step-card h3 { font-size: 1.4rem; margin-bottom: 0.75rem; }
+.step-card p { color: var(--color-text-light); line-height: 1.6; }
+.step-arrow { font-size: 2.5rem; color: var(--color-accent-blue); }
+@media (max-width: 900px) {
+  .steps-container { flex-direction: column; }
+  .step-arrow { transform: rotate(90deg); }
+}
