@@ -1,14 +1,13 @@
 import React from 'react';
 import './TimelinePage.css';
 
-// 1. Updated the type for a single timeline event
+
 interface RoadmapEvent {
   version: string;
   title: string;
   features: string[];
 }
 
-// 2. Updated data to match the new design
 const roadmapData: RoadmapEvent[] = [
   {
     version: '1.0',
@@ -39,7 +38,6 @@ const roadmapData: RoadmapEvent[] = [
   },
 ];
 
-// 3. The Modified Timeline Page Component
 const TimelinePage: React.FC = () => {
   return (
     <div className="timeline-container">
@@ -56,7 +54,7 @@ const TimelinePage: React.FC = () => {
               <div className="timeline-line"></div>
             </div>
 
-            {/* The content card */}
+           
             <div className="timeline-content">
               <div className="timeline-card">
                 <h2 className="card-version-title">
@@ -77,5 +75,6 @@ const TimelinePage: React.FC = () => {
     </div>
   );
 };
+
 
 export default TimelinePage;
