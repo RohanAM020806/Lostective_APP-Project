@@ -1,4 +1,4 @@
-# backend/notif.py
+
 from dotenv import load_dotenv
 import os
 import logging
@@ -6,10 +6,10 @@ from email.message import EmailMessage
 import smtplib
 from twilio.rest import Client
 
-# ------------------ Load .env ------------------
-load_dotenv()  # this loads EMAIL_USER, EMAIL_PASS, TWILIO_* automatically
 
-# ------------------ Logging ------------------
+load_dotenv()  
+
+
 logger = logging.getLogger("notif")
 logger.setLevel(logging.INFO)
 console_handler = logging.StreamHandler()
@@ -17,11 +17,11 @@ formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 console_handler.setFormatter(formatter)
 logger.addHandler(console_handler)
 
-# ------------------ Email Config ------------------
+
 EMAIL_ADDRESS = os.getenv("EMAIL_USER")
 EMAIL_PASSWORD = os.getenv("EMAIL_PASS")
 
-# ------------------ Send Email ------------------
+
 def send_email(to: str, subject: str, body: str) -> None:
     if not EMAIL_ADDRESS or not EMAIL_PASSWORD:
         logger.warning("❌ Email credentials not set; skipping email to %s", to)
@@ -39,12 +39,10 @@ def send_email(to: str, subject: str, body: str) -> None:
     except Exception:
         logger.exception("❌ Failed to send email to %s", to)
 
-# ------------------ Twilio Call Config ------------------
+
 TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID")
 TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
-TWILIO_PHONE = os.getenv("TWILIO_PHONE_NUMBER")  # match .env
-
-# ------------------ Make Phone Call ------------------
+TWILIO_PHONE = os.getenv("TWILIO_PHONE_NUMBER")  
 def make_phone_call(to_number: str, message: str) -> None:
     if not (TWILIO_ACCOUNT_SID and TWILIO_AUTH_TOKEN and TWILIO_PHONE):
         logger.warning("⚠️ Twilio credentials missing; skipping call to %s", to_number)
@@ -59,3 +57,4 @@ def make_phone_call(to_number: str, message: str) -> None:
         logger.info("📞 Call initiated to %s sid=%s", to_number, call.sid)
     except Exception:
         logger.exception("❌ Twilio call failed for %s", to_number)
+
