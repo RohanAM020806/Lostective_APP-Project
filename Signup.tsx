@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../Login/Login.css'; // Shared CSS
+import '../Login/Login.css'; 
 
 const Signup: React.FC = () => {
   const navigate = useNavigate();
@@ -14,11 +14,11 @@ const Signup: React.FC = () => {
     setStatus('Creating account...');
 
     try {
-      // ✅ Use /api/login because backend handles both login + signup
+      
       const res = await fetch('http://localhost:8000/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, password }), // include name
+        body: JSON.stringify({ name, email, password }), 
       });
 
       const data = await res.json();
@@ -92,3 +92,4 @@ const Signup: React.FC = () => {
 };
 
 export default Signup;
+
