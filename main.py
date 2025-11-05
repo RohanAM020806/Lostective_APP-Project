@@ -12,19 +12,18 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from dotenv import load_dotenv
 
-# Local imports
 from database import items_col
 from ai_matcher import run_matching_pipeline, generate_qr_for_item
 from auth import router as auth_router, get_current_user
 from notif import send_email, make_phone_call
 
-# -------------------- LOAD ENV --------------------
+
 load_dotenv()
 UPLOAD_DIR = "uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
-# -------------------- FASTAPI SETUP --------------------
-app = FastAPI(title="LostLink AI Backend")
+
+app = FastAPI(title="Lostective  Backend")
 app.include_router(auth_router)
 
 app.add_middleware(
@@ -37,13 +36,12 @@ app.add_middleware(
 
 app.mount("/uploads", StaticFiles(directory=UPLOAD_DIR), name="uploads")
 
-# -------------------- HELPERS --------------------
+
 def sanitize_item(item):
     item["_id"] = str(item["_id"])
     return item
 
 
-# -------------------- REPORT LOST ITEM --------------------
 @app.post("/api/report_lost")
 async def report_lost(
     background_tasks: BackgroundTasks,
@@ -98,7 +96,7 @@ async def report_lost(
     }
 
 
-# -------------------- REPORT FOUND ITEM --------------------
+
 @app.post("/api/report_found")
 async def report_found(
     background_tasks: BackgroundTasks,
@@ -150,7 +148,7 @@ async def report_found(
     }
 
 
-# -------------------- GET ALL ITEMS --------------------
+
 @app.get("/api/items")
 async def get_items():
     """Public endpoint — returns all lost and found items."""
@@ -174,7 +172,7 @@ async def get_items():
     ]
 
 
-# -------------------- GET SINGLE ITEM BY ID --------------------
+
 @app.get("/api/items/{item_id}")
 async def get_item_by_id(item_id: str):
     """Fetch details for one item (used when clicking an item in UI)."""
@@ -185,7 +183,7 @@ async def get_item_by_id(item_id: str):
     return item
 
 
-# -------------------- CLAIM ITEM --------------------
+
 @app.post("/api/claim_item")
 async def claim_item(background_tasks: BackgroundTasks, data: dict):
     """Handle claim submission and notify owner via email or phone."""
@@ -202,7 +200,7 @@ async def claim_item(background_tasks: BackgroundTasks, data: dict):
     if not item:
         raise HTTPException(status_code=404, detail="Item not found")
 
-    # Update database
+    
     items_col.update_one(
         {"_id": ObjectId(item_id)},
         {"$set": {
@@ -221,7 +219,7 @@ async def claim_item(background_tasks: BackgroundTasks, data: dict):
     owner_phone = item.get("contact_info")
     item_name = item.get("item_name", "Unknown Item")
 
-    # Send email to owner
+    
     if owner_email:
         subject = f"📦 Claim submitted for your item: {item_name}"
         body = f"""
@@ -274,7 +272,8 @@ Reuniting lost items with their owners.
     }
 
 
-# -------------------- ROOT --------------------
+
 @app.get("/")
 def root():
     return {"message": "LostEctive Backend running ✅"}
+
