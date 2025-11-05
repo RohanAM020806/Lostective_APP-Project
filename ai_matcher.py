@@ -1,4 +1,4 @@
-# ai_matcher.py
+
 import os
 import re
 import base64
@@ -13,8 +13,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 
 from database import items_col
 from notif import send_email, make_phone_call
-
-# ------------------ Logging ------------------
+-
 logger = logging.getLogger("LostLectiveAgent")
 logger.setLevel(logging.INFO)
 console_handler = logging.StreamHandler()
@@ -22,15 +21,15 @@ formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 console_handler.setFormatter(formatter)
 logger.addHandler(console_handler)
 
-# ------------------ Gemini AI Config ------------------
+
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 gemini_model = genai.GenerativeModel(model_name="models/gemini-1.5-flash")
 
-# ------------------ Validators ------------------
+
 def is_valid_email(address: str) -> bool:
     return bool(re.match(r"[^@]+@[^@]+\.[^@]+", address))
 
-# ------------------ QR Code Generator ------------------
+
 def generate_qr_for_item(item_id: str) -> str:
     """Generate a QR code image string for the frontend."""
     base_url = os.getenv("BASE_URL", "http://localhost:5173")
@@ -40,14 +39,14 @@ def generate_qr_for_item(item_id: str) -> str:
     qr.save(buf, format="PNG")
     return "data:image/png;base64," + base64.b64encode(buf.getvalue()).decode()
 
-# ------------------ Notifications ------------------
+
 def ai_agent_notify(lost_item: dict, found_item: dict):
     """Notify user via email and optionally phone call with QR code."""
     contact = lost_item.get("contact_info")
     item_id = str(found_item.get("_id"))
     base_url = os.getenv("BASE_URL", "http://localhost:5173")
 
-    # Generate QR code
+
     qr_data = generate_qr_for_item(item_id)
 
     subject = "🎯 Possible Match for Your Lost Item!"
@@ -106,7 +105,7 @@ Reuniting Things One At A Time<br><br>
         except Exception as e:
             logger.error(f"📞 Call failed: {e}")
 
-# ------------------ TF-IDF Matcher ------------------
+
 def match_with_tfidf(new_item: dict, threshold: float = 0.75) -> list:
     """Return a list of TF-IDF matched items."""
     opposite_type = "found" if new_item["type"] == "lost" else "lost"
@@ -135,7 +134,7 @@ def match_with_tfidf(new_item: dict, threshold: float = 0.75) -> list:
             matches.append(matched_item)
     return matches
 
-# ------------------ Gemini Matcher ------------------
+
 def match_with_gemini(new_item: dict) -> list:
     """Return a list of Gemini AI matched items."""
     other_items = list(items_col.find({
@@ -170,10 +169,10 @@ Answer YES or NO.
 
     return matched_items
 
-# ------------------ Matching Pipeline ------------------
+
 def run_matching_pipeline(item_id: str) -> dict:
     """Run the full matching pipeline: TF-IDF -> Gemini -> notifications."""
-    logger.info(f"🚀 Running AI matching for item {item_id}")
+    logger.info(f" Running AI matching for item {item_id}")
     item = items_col.find_one({"_id": ObjectId(item_id)})
     if not item:
         logger.warning(f"Item {item_id} not found")
@@ -182,7 +181,7 @@ def run_matching_pipeline(item_id: str) -> dict:
     # Step 1: TF-IDF
     tfidf_matches = match_with_tfidf(item)
     if tfidf_matches:
-        logger.info("✅ TF-IDF matched. Skipping Gemini.")
+        logger.info(" TF-IDF matched. Skipping Gemini.")
         return {"method": "tfidf", "matches": tfidf_matches}
 
     # Step 2: Gemini (priority items)
@@ -190,5 +189,6 @@ def run_matching_pipeline(item_id: str) -> dict:
         gemini_matches = match_with_gemini(item)
         return {"method": "gemini", "matches": gemini_matches}
 
-    logger.info("❌ No matches found")
+    logger.info(" No matches found")
     return {"method": "none", "matches": []}
+
