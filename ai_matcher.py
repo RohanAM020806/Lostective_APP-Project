@@ -165,8 +165,7 @@ Answer YES or NO.
             ai_agent_notify(existing, new_item)
             contacted.add(existing.get("contact_info"))
             matched_items.append(existing)
-            break  # remove break if multiple matches needed
-
+            break  
     return matched_items
 
 
@@ -191,4 +190,5 @@ def run_matching_pipeline(item_id: str) -> dict:
 
     logger.info(" No matches found")
     return {"method": "none", "matches": []}
+
 
