@@ -5,8 +5,8 @@ from passlib.context import CryptContext
 from datetime import datetime, timedelta
 from database import users_col
 
-# ---------- CONFIG ----------
-SECRET_KEY = "supersecretkey123"  # change to your own secret key!
+
+SECRET_KEY = "supersecretkey123" 
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_HOURS = 3
 
@@ -14,8 +14,6 @@ router = APIRouter()
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/login")
 
-
-# ---------- HELPER FUNCTIONS ----------
 def hash_password(password: str) -> str:
     return pwd_context.hash(password)
 
@@ -37,7 +35,7 @@ def get_user_by_email(email: str):
     return users_col.find_one({"email": email})
 
 
-# ---------- LOGIN / SIGNUP ----------
+
 @router.post("/api/login")
 async def login(data: dict):
     email = data.get("email")
@@ -49,7 +47,7 @@ async def login(data: dict):
 
     user = get_user_by_email(email)
 
-    # New user -> Signup
+   
     if not user:
         if not name:
             raise HTTPException(status_code=400, detail="Name is required for signup")
@@ -64,7 +62,7 @@ async def login(data: dict):
             "access_token": token
         }
 
-    # Existing user -> Login
+  
     if not verify_password(password, user["password"]):
         raise HTTPException(status_code=401, detail="Incorrect password")
 
@@ -77,7 +75,7 @@ async def login(data: dict):
     }
 
 
-# ---------- AUTH PROTECTION ----------
+
 async def get_current_user(token: str = Depends(oauth2_scheme)):
     """Extract user info from JWT token"""
     try:
@@ -93,3 +91,4 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
         raise HTTPException(status_code=404, detail="User not found")
 
     return {"email": user["email"], "name": user["name"]}
+
