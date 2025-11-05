@@ -11,8 +11,10 @@ Lostective is a modern React-based web application designed to help users report
 <img width="1914" height="896" alt="image" src="https://github.com/user-attachments/assets/d54a89c1-84c3-44c5-9b98-e2e409445bdc" />
 <img width="1851" height="894" alt="image" src="https://github.com/user-attachments/assets/1525de83-c939-42b8-ba31-d7bac88b30df" />
 <img width="1851" height="894" alt="image" src="https://github.com/user-attachments/assets/aaa38d25-509d-4be4-8d3a-808f1339c1f4" />
-<img width="1826" height="827" alt="image" src="https://github.com/user-attachments/assets/880632c3-2b85-46c3-9b21-bd4786fc3a27" />
-<img width="1788" height="717" alt="image" src="https://github.com/user-attachments/assets/d2f46c83-dd71-4362-ad9b-6adbd722061c" />
+<img width="1836" height="542" alt="image" src="https://github.com/user-attachments/assets/1a68a8b1-6b3d-430b-82ed-6b09e40e27a3" />
+
+<img width="1615" height="650" alt="image" src="https://github.com/user-attachments/assets/d8b15b93-922e-45fc-be71-a8785e4da42e" />
+
 
 
 <img width="1817" height="923" alt="image" src="https://github.com/user-attachments/assets/3243d5ea-4ad0-4e9c-abbb-db22eecd9dbb" />
